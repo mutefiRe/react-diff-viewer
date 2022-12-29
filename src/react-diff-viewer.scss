@@ -1,0 +1,194 @@
+@use "sass:map";
+
+$namespace: react-diff-viewer;
+
+.#{$namespace}__content {
+  width: 100%;
+}
+
+.#{$namespace}--split-view {
+  .#{$namespace}__content {
+    width: 50%;
+  }
+}
+
+.#{$namespace} {
+  width: 100%;
+  background: map.get($variables, "diffViewerBackground");
+
+  pre {
+    margin: 0;
+    white-space: pre-wrap;
+    line-height: 25px;
+  }
+
+  border-collapse: collapse;
+}
+
+.#{$namespace}__code-fold-content {
+  color: map.get($variables, "codeFoldContentColor");
+}
+
+.#{$namespace}__content-text {
+  color: map.get($variables, "diffViewerColor");
+}
+
+.#{$namespace}__title-block {
+  background: map.get($variables, "diffViewerTitleBackground");
+  padding: 10px;
+  border-bottom: 1px solid map.get($variables, "diffViewerTitleBorderColor");
+
+  &:last-child {
+    border-left: 1px solid map.get($variables, "diffViewerTitleBorderColor");
+  }
+
+  .#{$namespace}__content-text {
+    color: map.get($variables, "diffViewerTitleColor");
+  }
+}
+
+.#{$namespace}__line-number {
+  color: map.get($variables, "gutterColor");
+}
+
+.#{$namespace}__line-cell {
+  &--diff-removed {
+    background: map.get($variables, "removedBackground");
+    color: map.get($variables, "removedColor");
+
+    pre {
+      color: map.get($variables, "removedColor");
+    }
+
+    &.#{$namespace}__line-number {
+      color: map.get($variables, "removedGutterColor");
+    }
+  }
+
+  &--diff-added {
+    background: map.get($variables, "addedBackground");
+    color: map.get($variables, "addedColor");
+
+    pre {
+      color: map.get($variables, "addedColor");
+    }
+
+    &.#{$namespace}__line-number {
+      color: map.get($variables, "addedGutterColor");
+    }
+  }
+}
+
+.#{$namespace}__word-diff {
+  padding: 2px;
+  display: inline-flex;
+  border-radius: 1px;
+
+  &--word-added {
+    background: map.get($variables, "wordAddedBackground");
+  }
+
+  &--word-removed {
+    background: map.get($variables, "wordRemovedBackground");
+  }
+}
+
+.#{$namespace}__code-fold-gutter {
+  background-color: map.get($variables, "codeFoldGutterBackground");
+}
+
+.#{$namespace}__code-fold {
+  background-color: map.get($variables, "codeFoldBackground");
+  height: 40px;
+  font-size: 14px;
+  font-weight: 700;
+
+  a {
+    text-decoration: underline !important;
+    cursor: pointer;
+
+    pre {
+      display: inline;
+    }
+  }
+}
+
+.#{$namespace}__line-cell--empty {
+  background-color: map.get($variables, "emptyLineBackground");
+}
+
+.#{$namespace}__marker {
+  width: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
+  user-select: none;
+
+  &.#{$namespace}__line-cell--diff-added {
+    pre {
+      color: map.get($variables, "addedColor");
+    }
+  }
+
+  &.#{$namespace}__line-cell--diff-removed {
+    pre {
+      color: map.get($variables, "removedColor");
+    }
+  }
+}
+
+.#{$namespace}__line-cell--highlight {
+  background: map.get($variables, "highlightBackground");
+
+  .#{$namespace}__word-diff--word-added,
+  .#{$namespace}__word-diff--word-removed {
+    background-color: initial;
+  }
+}
+
+.#{$namespace}__gutter {
+  user-select: none;
+  min-width: 50px;
+  padding: 0 10px;
+  text-align: right;
+  background: map.get($variables, "gutterBackground");
+
+  &:hover {
+    cursor: pointer;
+    background: map.get($variables, "gutterBackgroundDark");
+
+    pre {
+      opacity: 1;
+    }
+  }
+
+  pre {
+    opacity: 0.5;
+  }
+
+  &.#{$namespace}__line-cell--diff-added {
+    background: map.get($variables, "addedGutterBackground");
+  }
+
+  &.#{$namespace}__line-cell--diff-removed {
+    background: map.get($variables, "removedGutterBackground");
+  }
+
+  &.#{$namespace}__gutter--highlight {
+    background: map.get($variables, "highlightGutterBackground");
+
+    &:hover {
+      background: map.get($variables, "highlightGutterBackground");
+    }
+  }
+
+  &--empty {
+    &:hover {
+      background: map.get($variables, "gutterBackground");
+      cursor: initial;
+    }
+  }
+}
+
+.#{$namespace}__line {
+  vertical-align: baseline;
+}
