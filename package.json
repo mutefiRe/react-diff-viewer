@@ -1,5 +1,5 @@
 {
-	"name": "react-diff-viewer",
+	"name": "@hackler/react-diff-viewer",
 	"version": "3.1.1",
 	"private": false,
 	"description": "A simple and beautiful text diff viewer component made with diff and React",
@@ -13,9 +13,12 @@
 		"react-component",
 		"ui"
 	],
-	"repository": "git@github.com:praneshr/react-diff-viewer.git",
+	"repository": "git@github.com:hackle-io/react-diff-viewer.git",
 	"license": "MIT",
 	"author": "Pranesh Ravi<praneshpranesh@gmail.com>",
+	"contributors": [
+		"Yoonji Jang<yjang@hackle.io>"
+	],
 	"main": "lib/index",
 	"typings": "lib/index",
 	"scripts": {
