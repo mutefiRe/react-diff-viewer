@@ -9,6 +9,7 @@
     "declaration": true,
     "downlevelIteration": true,
     "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
     "types": [
       "mocha",
       "node"
