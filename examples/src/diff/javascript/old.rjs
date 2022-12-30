@@ -49,15 +49,6 @@ module.exports = {
         test: /\.css$/,
         loader: 'style!css?modules&localIdentName=[name]---[local]---[hash:base64:5]'
       },
-      {
-        test: /\.scss$/,
-        loaders: [
-          'style?sourceMap',
-          'css?modules&importLoaders=1&localIdentName=[name]--[local]',
-          'sass?sourceMap'
-        ],
-        exclude: /node_modules|lib/
-      },
     ],
   },
   plugins: [

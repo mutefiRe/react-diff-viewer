@@ -10,7 +10,7 @@ module.exports = {
   mode: process.env.NODE_ENV === 'production' ?
     'production' : 'development',
   resolve: {
-    extensions: ['.jsx', '.tsx', '.ts', '.scss', '.css', '.js'],
+    extensions: ['.jsx', '.tsx', '.ts', '.css', '.js'],
   },
   output: {
     path: path.resolve(__dirname, 'examples/dist'),
@@ -33,11 +33,10 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.s?css$/,
+        test: /\.css$/,
         use: [
           Css.loader,
           'css-loader',
-          'sass-loader',
         ],
       },
       {

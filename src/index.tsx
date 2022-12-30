@@ -66,6 +66,7 @@ export interface ReactDiffViewerProps {
 	leftTitle?: string | JSX.Element;
 	// Title for left column
 	rightTitle?: string | JSX.Element;
+	className?: string;
 }
 
 export interface ReactDiffViewerState {
@@ -549,6 +550,7 @@ class DiffViewer extends React.Component<
 			rightTitle,
 			splitView,
 			hideLineNumbers,
+			className,
 		} = this.props;
 
 		if (typeof oldValue !== 'string' || typeof newValue !== 'string') {
@@ -579,7 +581,7 @@ class DiffViewer extends React.Component<
 			<table
 				className={cn(this.styles.diffContainer, {
 					[this.styles.splitView]: splitView,
-				})}>
+				}, className)}>
 				<tbody>
 					{title}
 					{nodes}
