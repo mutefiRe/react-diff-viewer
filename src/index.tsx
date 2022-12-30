@@ -620,7 +620,7 @@ ReactDiffViewerState
         className={cn(
           bem({ 'split-view': splitView }).toString(),
           classes.diffContainer,
-          { [classes.splitView]: splitView },
+          classes.splitView && { [classes.splitView]: splitView },
           className,
         )}>
         <tbody>
