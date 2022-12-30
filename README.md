@@ -75,8 +75,7 @@ class Diff extends PureComponent {
 | showDiffOnly              | `boolean`       | `true`                         | Shows only the diffed lines and folds the unchanged lines                                                                                                                                                                                                                                                                                                                                                        |
 | extraLinesSurroundingDiff | `number`        | `3`                            | Number of extra unchanged lines surrounding the diff. Works along with `showDiffOnly`.                                                                                                                                                                                                                                                                                                                           |
 | codeFoldMessageRenderer   | `function`      | `Expand {number} of lines ...` | Render Prop API to render code fold message.                                                                                                                                                                                                                                                                                                                                                                     |
-| styles                    | `object`        | `{}`                           | To override style variables and styles. Learn more about [overriding styles](#overriding-styles)                                                                                                                                                                                                                                                                                                                 |
-| useDarkTheme              | `boolean`       | `true`                         | To enable/disable dark theme.                                                                                                                                                                                                                                                                                                                                                                                    |
+| classes                    | `object`        | `{}`                           | To override styles. Learn more about [overriding styles](#overriding-styles)                                                                                                                                                                                                                                                                                                                 |
 | leftTitle                 | `string`        | `undefined`                    | Column title for left section of the diff in split view. This will be used as the only title in inline view.                                                                                                                                                                                                                                                                                                     |
 | rightTitle                | `string`        | `undefined`                    | Column title for right section of the diff in split view. This will be ignored in inline view.                                                                                                                                                                                                                                                                                                                   |
 | linesOffset               | `number`        | `0`                            | Number to start count code lines from.                                                                                                                                                                                                                                                                                                                                                                           |
@@ -104,6 +103,7 @@ An example using [Prism JS](https://prismjs.com)
 ```javascript
 import React, { PureComponent } from 'react';
 import ReactDiffViewer from 'react-diff-viewer';
+import 'react-diff-viewer/lib/light.css';
 
 const oldCode = `
 const a = 10
@@ -198,99 +198,55 @@ class Diff extends PureComponent {
 
 ## Overriding Styles
 
-React Diff Viewer uses [emotion](https://emotion.sh/) for styling. It also offers a simple way to override styles and style variables. You can supply different variables for both light and dark themes. Styles will be common for both themes.
+React Diff Viewer uses css for styling. It also offers a simple way to override styles. You can supply different class names.
 
-Below are the default style variables and style object keys.
+Below are the default class object keys.
 
 ```javascript
 
-// Default variables and style keys
+// Default style keys
 
-const defaultStyles = {
-  variables: {
-    light: {
-      diffViewerBackground: '#fff',
-      diffViewerColor: '#212529',
-      addedBackground: '#e6ffed',
-      addedColor: '#24292e',
-      removedBackground: '#ffeef0',
-      removedColor: '#24292e',
-      wordAddedBackground: '#acf2bd',
-      wordRemovedBackground: '#fdb8c0',
-      addedGutterBackground: '#cdffd8',
-      removedGutterBackground: '#ffdce0',
-      gutterBackground: '#f7f7f7',
-      gutterBackgroundDark: '#f3f1f1',
-      highlightBackground: '#fffbdd',
-      highlightGutterBackground: '#fff5b1',
-      codeFoldGutterBackground: '#dbedff',
-      codeFoldBackground: '#f1f8ff',
-      emptyLineBackground: '#fafbfc',
-      gutterColor: '#212529',
-      addedGutterColor: '#212529',
-      removedGutterColor: '#212529',
-      codeFoldContentColor: '#212529',
-      diffViewerTitleBackground: '#fafbfc',
-      diffViewerTitleColor: '#212529',
-      diffViewerTitleBorderColor: '#eee',
-    },
-    dark: {
-      diffViewerBackground: '#2e303c',
-      diffViewerColor: '#FFF',
-      addedBackground: '#044B53',
-      addedColor: 'white',
-      removedBackground: '#632F34',
-      removedColor: 'white',
-      wordAddedBackground: '#055d67',
-      wordRemovedBackground: '#7d383f',
-      addedGutterBackground: '#034148',
-      removedGutterBackground: '#632b30',
-      gutterBackground: '#2c2f3a',
-      gutterBackgroundDark: '#262933',
-      highlightBackground: '#2a3967',
-      highlightGutterBackground: '#2d4077',
-      codeFoldGutterBackground: '#21232b',
-      codeFoldBackground: '#262831',
-      emptyLineBackground: '#363946',
-      gutterColor: '#464c67',
-      addedGutterColor: '#8c8c8c',
-      removedGutterColor: '#8c8c8c',
-      codeFoldContentColor: '#555a7b',
-      diffViewerTitleBackground: '#2f323e',
-      diffViewerTitleColor: '#555a7b',
-      diffViewerTitleBorderColor: '#353846',
-    }
-  },
-  diffContainer?: {}, // style object
-  diffRemoved?: {}, // style object
-  diffAdded?: {}, // style object
-  marker?: {}, // style object
-  emptyGutter?: {}, // style object
-  highlightedLine?: {}, // style object
-  lineNumber?: {}, // style object
-  highlightedGutter?: {}, // style object
-  contentText?: {}, // style object
-  gutter?: {}, // style object
-  line?: {}, // style object
-  wordDiff?: {}, // style object
-  wordAdded?: {}, // style object
-  wordRemoved?: {}, // style object
-  codeFoldGutter?: {}, // style object
-  codeFold?: {}, // style object
-  emptyLine?: {}, // style object
-  content?: {}, // style object
-  titleBlock?: {}, // style object
-  splitView?: {}, // style object
+const defaultClasses = {
+  diffContainer?: 'react-diff-viewer',
+  diffRemoved?: 'react-diff-viewer__line-cell--diff-removed',
+  diffAdded?: 'react-diff-viewer__line-cell--diff-added',
+  marker?: 'react-diff-viewer__marker',
+  emptyGutter?: 'react-diff-viewer__gutter--empty',
+  highlightedLine?: 'react-diff-viewer__line-cell--highlight',
+  lineNumber?: 'react-diff-viewer__line-number',
+  highlightedGutter?: 'react-diff-viewer__gutter--highlight',
+  contentText?: 'react-diff-viewer__content-text',
+  gutter?: 'react-diff-viewer__gutter',
+  line?: 'react-diff-viewer__line',
+  wordDiff?: 'react-diff-viewer__word-diff',
+  wordAdded?: 'react-diff-viewer__word-diff--word-added',
+  wordRemoved?: 'react-diff-viewer__word-diff--word-removed',
+  codeFoldGutter?: 'react-diff-viewer__code-fold-gutter',
+  codeFold?: 'react-diff-viewer__code-fold',
+  emptyLine?: 'react-diff-viewer__line-cell--empty',
+  content?: 'react-diff-viewer__content',
+  titleBlock?: 'react-diff-viewer__title-block',
+  splitView?: 'react-diff-viewer--split-view',
 }
 ```
 
-To override any style, just pass the new style object to the `styles` prop. New style will be computed using `Object.assign(default, override)`.
+To override any style, just pass the class names to the `classes` prop.
 
-For keys other than `variables`, the value can either be an object or string interpolation.
+```css
+/* styles.css */
+.diff-viewer__line {
+  padding: 10px 2px;
+}
+
+.diff-viewer__line:hover {
+  background: #a26ea1;
+}
+```
 
 ```javascript
 import React, { PureComponent } from 'react';
 import ReactDiffViewer from 'react-diff-viewer';
+import './styles.css'
 
 const oldCode = `
 const a = 10
@@ -323,19 +279,8 @@ class Diff extends PureComponent {
   );
 
   render = () => {
-    const newStyles = {
-      variables: {
-        dark: {
-          highlightBackground: '#fefed5',
-          highlightGutterBackground: '#ffcd3c',
-        },
-      },
-      line: {
-        padding: '10px 2px',
-        '&:hover': {
-          background: '#a26ea1',
-        },
-      },
+    const classes = {
+      line: 'diff-viewer__line',
     };
 
     return (
